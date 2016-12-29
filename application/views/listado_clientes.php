@@ -10,5 +10,4 @@
             <a href="<?php echo 'pedido/cliente/'.$cliente->idCliente; ?>">pedidos</a>
         </div>
     </div>
-
 <?php endforeach; ?>    
