@@ -16,16 +16,23 @@ class Cliente extends CI_Controller{
     public function __construct() {
         parent::__construct();
         $this->load->model('neptuno');
+        $this->load->helper('url');
+        $this->load->library('ion_auth');
+        if($this->ion_auth->logged_in()===FALSE)
+        {
+            redirect('auth/login');
+        }
         
     }
     
     public function add(){
         $this->load->helper('form');
-        $this->load->helper('url'); //por redirect
+        //$this->load->helper('url'); //por redirect
         $this->load->library('form_validation');
         $this->load->library('session'); //por flashdata
         
         $data['title']='Alta de Clientes';
+        $data['active']='cliente';
         $this->form_validation->set_rules('nombreCli', 'nombre del cliente', 'required', ['required'=>'No se te puede olvidar el %s']);
         $this->form_validation->set_rules('codCliente', 'código de cliente', 'required|exact_length[5]|alpha|is_unique[cliente.codCliente]|strtoupper');
         $this->form_validation->set_rules('direccion', 'dirección del cliente', 'required|trim');
