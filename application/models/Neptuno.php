@@ -20,6 +20,12 @@ class Neptuno extends CI_Model{
         $this->load->database();
     }
     
+    function num_clientes()
+    {
+        $consulta = $this->db->get('cliente');
+        return  $consulta->num_rows() ;
+    }
+    
     public function get_clientes($limites = FALSE)
     {
         if ($limites !== FALSE)

@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-3">
             <h5 class="text-primary">
                 <?php echo $this->ion_auth->user()->row()->last_name,', '.$this->ion_auth->user()->row()->first_name; ?>
-                <a href='auth/logout' >
+                <a href='<?php echo site_url();?>/auth/logout' >
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                 </a>
             </h5>
